@@ -2,6 +2,7 @@ package com.dantesys.valentcitymod;
 
 import com.dantesys.valentcitymod.block.ModBlocks;
 import com.dantesys.valentcitymod.item.ModItens;
+import com.dantesys.valentcitymod.util.CreativeTab;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,6 +26,7 @@ public class ValentCityMod
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreativeTba);
         MinecraftForge.EVENT_BUS.register(this);
+        CreativeTab.register(modEventBus);
         ModItens.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);

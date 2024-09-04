@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "caterogy": "misc",
+  "key": {
+    "S": {
+      "item": "minecraft:heart_of_the_sea"
+    },
+    "G": {
+      "item": "minecraft:gold_block"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "AGA",
+    "GSG",
+    "AGA"
+  ],
+  "result": {
+    "count": 4,
+    "id": "valentcitymod:ascension"
+  }
+}

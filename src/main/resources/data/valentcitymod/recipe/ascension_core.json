@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "caterogy": "misc",
+  "key": {
+    "A": {
+      "item": "valentcitymod:ascension"
+    },
+    "C": {
+      "item": "minecraft:heavy_core"
+    },
+    "D": {
+      "item": "minecraft:diamond"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    },
+    "F": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "ADA",
+    "GCE",
+    "AFA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "valentcitymod:ascension_core"
+  }
+}
