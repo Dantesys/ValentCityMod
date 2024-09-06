@@ -13,6 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegisterEvent;
 import org.slf4j.Logger;
 
 @Mod(ValentCityMod.MODID)
@@ -29,9 +30,11 @@ public class ValentCityMod
         CreativeTab.register(modEventBus);
         ModItens.register(modEventBus);
         ModBlocks.register(modEventBus);
+        modEventBus.addListener(this::modEventHandler);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
-
+    private void modEventHandler(RegisterEvent event) {
+    }
     private void commonSetup(final FMLCommonSetupEvent event)
     {
         LOGGER.debug("OK");
