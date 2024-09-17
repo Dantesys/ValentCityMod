@@ -56,17 +56,23 @@ public class ModEvents {
         LivingEntity entity =  event.getEntity();
         if(entity instanceof Player player){
             if(player.getInventory().contains(ModItems.CEIFADORPR.get().getDefaultInstance()) || player.getInventory().contains(ModItems.CEIFADORR.get().getDefaultInstance())){
-                double max = player.getMaxHealth();
-                Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(max-2);
-                player.setHealth((float) (max-2));
+                Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(20);
             }
         }else{
             Entity atacante = event.getSource().getEntity();
             if(atacante instanceof Player player){
-                if(player.getInventory().contains(ModItems.CEIFADORPR.get().getDefaultInstance()) || player.getInventory().contains(ModItems.CEIFADORR.get().getDefaultInstance())){
+                if(player.getMainHandItem().is(ModItems.CEIFADORPR.get())){
                     double max = player.getMaxHealth();
-                    Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(max+2);
-                    player.setHealth((float) (max+2));
+                    if(max<200){
+                        Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(max+2);
+                        player.setHealth((float) (max+2));
+                    }
+                }else if(player.getMainHandItem().is(ModItems.CEIFADORR.get())){
+                    double max = player.getMaxHealth();
+                    if(max<1000){
+                        Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(max+2);
+                        player.setHealth((float) (max+2));
+                    }
                 }
             }
         }
