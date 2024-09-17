@@ -1,7 +1,7 @@
 package com.dantesys.valentcitymod.block;
 
 import com.dantesys.valentcitymod.ValentCityMod;
-import com.dantesys.valentcitymod.item.ModItens;
+import com.dantesys.valentcitymod.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -26,7 +26,7 @@ public class ModBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block){
-        ModItens.ITENS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
+        ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
     public static void register(IEventBus event){

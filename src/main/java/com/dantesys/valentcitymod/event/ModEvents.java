@@ -1,20 +1,26 @@
 package com.dantesys.valentcitymod.event;
 
 import com.dantesys.valentcitymod.ValentCityMod;
-import com.dantesys.valentcitymod.item.ModItens;
+import com.dantesys.valentcitymod.item.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.scores.PlayerTeam;
 import net.minecraft.world.scores.Scoreboard;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Objects;
 import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = ValentCityMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
@@ -24,13 +30,45 @@ public class ModEvents {
     public void segurar(TickEvent.PlayerTickEvent event){
         ItemStack i = event.player.getMainHandItem();
         Player le = event.player;
-        if(i.is(ModItens.CEIFADORPR.get()) || i.is(ModItens.CEIFADORR.get())){
+        if(i.is(ModItems.CEIFADORPR.get()) || i.is(ModItems.CEIFADORR.get())){
             le.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,-1));
             le.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,-1));
             glowColor(le, ChatFormatting.BLACK);
         }else{
             stopGlowing(le);
             limpaEfeito(le);
+        }
+    }
+    @SubscribeEvent
+    public void ataque(LivingDamageEvent event){
+        Entity atacante = event.getSource().getEntity();
+        if(atacante instanceof Player player){
+            ItemStack is = player.getMainHandItem();
+            if(is.is(ModItems.CEIFADORPR.get())){
+                player.heal(event.getAmount()/4);
+            }else if(is.is(ModItems.CEIFADORR.get())){
+                player.heal(event.getAmount()/2);
+            }
+        }
+    }
+    @SubscribeEvent
+    public void foidef(LivingDeathEvent event){
+        LivingEntity entity =  event.getEntity();
+        if(entity instanceof Player player){
+            if(player.getInventory().contains(ModItems.CEIFADORPR.get().getDefaultInstance()) || player.getInventory().contains(ModItems.CEIFADORR.get().getDefaultInstance())){
+                double max = player.getMaxHealth();
+                Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(max-2);
+                player.setHealth((float) (max-2));
+            }
+        }else{
+            Entity atacante = event.getSource().getEntity();
+            if(atacante instanceof Player player){
+                if(player.getInventory().contains(ModItems.CEIFADORPR.get().getDefaultInstance()) || player.getInventory().contains(ModItems.CEIFADORR.get().getDefaultInstance())){
+                    double max = player.getMaxHealth();
+                    Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(max+2);
+                    player.setHealth((float) (max+2));
+                }
+            }
         }
     }
     public static void glowColor(Player player, ChatFormatting color) {

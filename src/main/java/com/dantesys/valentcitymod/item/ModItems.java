@@ -8,16 +8,16 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModItens {
-    public static final DeferredRegister<Item> ITENS = DeferredRegister.create(ForgeRegistries.ITEMS, ValentCityMod.MODID);
+public class ModItems {
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, ValentCityMod.MODID);
 
-    public static final RegistryObject<Item> ASCENSION = ITENS.register("ascension",
+    public static final RegistryObject<Item> ASCENSION = ITEMS.register("ascension",
             () -> new Item(new Item.Properties()));
-    public static final RegistryObject<SwordItem> CEIFADORPR = ITENS.register("ceifadorpr",
+    public static final RegistryObject<SwordItem> CEIFADORPR = ITEMS.register("ceifadorpr",
             () -> new SwordItem(ModTier.PASCENCIONTIER,new SwordItem.Properties().fireResistant()));
-    public static final RegistryObject<SwordItem> CEIFADORR = ITENS.register("ceifadorr",
+    public static final RegistryObject<SwordItem> CEIFADORR = ITEMS.register("ceifadorr",
             () -> new SwordItem(ModTier.ASCENCIONTIER,new SwordItem.Properties().fireResistant()));
     public static void register(IEventBus event){
-        ITENS.register(event);
+        ITEMS.register(event);
     }
 }

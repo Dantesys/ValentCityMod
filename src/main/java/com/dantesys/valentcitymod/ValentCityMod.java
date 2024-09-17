@@ -1,7 +1,7 @@
 package com.dantesys.valentcitymod;
 
 import com.dantesys.valentcitymod.block.ModBlocks;
-import com.dantesys.valentcitymod.item.ModItens;
+import com.dantesys.valentcitymod.item.ModItems;
 import com.dantesys.valentcitymod.util.CreativeTab;
 import com.mojang.logging.LogUtils;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -28,7 +28,7 @@ public class ValentCityMod
         modEventBus.addListener(this::addCreativeTba);
         MinecraftForge.EVENT_BUS.register(this);
         CreativeTab.register(modEventBus);
-        ModItens.register(modEventBus);
+        ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
         modEventBus.addListener(this::modEventHandler);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
@@ -42,7 +42,7 @@ public class ValentCityMod
 
     private void addCreativeTba(BuildCreativeModeTabContentsEvent event){
         if(event.getTabKey() == CreativeModeTabs.INGREDIENTS){
-            event.accept(ModItens.ASCENSION);
+            event.accept(ModItems.ASCENSION);
             event.accept(ModBlocks.ASCENSION_CORE);
         }
     }

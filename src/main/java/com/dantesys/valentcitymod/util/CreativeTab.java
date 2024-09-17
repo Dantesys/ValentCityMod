@@ -2,7 +2,7 @@ package com.dantesys.valentcitymod.util;
 
 import com.dantesys.valentcitymod.ValentCityMod;
 import com.dantesys.valentcitymod.block.ModBlocks;
-import com.dantesys.valentcitymod.item.ModItens;
+import com.dantesys.valentcitymod.item.ModItems;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -19,10 +19,10 @@ public class CreativeTab {
                     .icon(() -> new ItemStack(ModBlocks.ASCENSION_CORE.get()))
                     .title(Component.translatable("creativetab.valentcitymod.valentcitytabtitle"))
                     .displayItems((itemDisplayParameters, output) -> {
-                        output.accept(ModItens.ASCENSION.get());
+                        output.accept(ModItems.ASCENSION.get());
                         output.accept(ModBlocks.ASCENSION_CORE.get());
-                        output.accept(ModItens.CEIFADORPR.get());
-                        output.accept(ModItens.CEIFADORR.get());
+                        output.accept(ModItems.CEIFADORPR.get());
+                        output.accept(ModItems.CEIFADORR.get());
                     })
                     .build());
 
