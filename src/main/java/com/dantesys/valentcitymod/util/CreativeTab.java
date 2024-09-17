@@ -21,7 +21,8 @@ public class CreativeTab {
                     .displayItems((itemDisplayParameters, output) -> {
                         output.accept(ModItens.ASCENSION.get());
                         output.accept(ModBlocks.ASCENSION_CORE.get());
-                        output.accept(ModItens.CEIFADOR.get());
+                        output.accept(ModItens.CEIFADORPR.get());
+                        output.accept(ModItens.CEIFADORR.get());
                     })
                     .build());
 

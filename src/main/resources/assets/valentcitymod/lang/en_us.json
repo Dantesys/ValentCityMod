@@ -1,6 +1,7 @@
 {
   "item.valentcitymod.ascension": "Relic Ascension",
-  "item.valentcitymod.ceifador": "Reaper Relic",
+  "item.valentcitymod.ceifadorpr": "Reaper Relic",
+  "item.valentcitymod.ceifadorr": "Reaper Relic Awakened",
   "block.valentcitymod.ascension_core": "Relic Ascension Core",
   "creativetab.valentcitymod.valentcitytabtitle": "ValentCity Relics"
 }

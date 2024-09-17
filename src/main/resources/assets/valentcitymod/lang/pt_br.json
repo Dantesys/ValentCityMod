@@ -1,6 +1,7 @@
 {
   "item.valentcitymod.ascension": "Ascensão da Relíquia",
-  "item.valentcitymod.ceifador": "Relíquia do Ceifador",
+  "item.valentcitymod.ceifadorpr": "Relíquia do Ceifador",
+  "item.valentcitymod.ceifadorr": "Relíquia do Ceifador (Despertada)",
   "block.valentcitymod.ascension_core": "Núcleo de Ascensão de Relíquia",
   "creativetab.valentcitymod.valentcitytabtitle": "ValentCity Relíquias"
 }
