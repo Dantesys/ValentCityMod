@@ -15,9 +15,9 @@ public class ModItems {
     public static final RegistryObject<Item> ASCENSION = ITEMS.register("ascension",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<SwordItem> CEIFADORPR = ITEMS.register("ceifadorpr",
-            () -> new SwordItem(ModTier.PASCENCIONTIER,new SwordItem.Properties().fireResistant()));
+            () -> new SwordItem(ModTier.PASCENCIONTIER,new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(ModTier.PASCENCIONTIER,2,-3f))));
     public static final RegistryObject<SwordItem> CEIFADORR = ITEMS.register("ceifadorr",
-            () -> new SwordItem(ModTier.ASCENCIONTIER,new SwordItem.Properties().rarity(Rarity.EPIC).fireResistant()));
+            () -> new SwordItem(ModTier.ASCENCIONTIER,new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(SwordItem.createAttributes(ModTier.ASCENCIONTIER,3,-2.4f))));
     public static void register(IEventBus event){
         ITEMS.register(event);
     }

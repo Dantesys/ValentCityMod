@@ -25,22 +25,24 @@ import java.util.UUID;
 
 @Mod.EventBusSubscriber(modid = ValentCityMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvents {
-    static HashMap<Player, PlayerTeam> tempTeams = new HashMap<>();
+    public static final HashMap<Player, PlayerTeam> tempTeams = new HashMap<>();
     @SubscribeEvent
-    public void segurar(TickEvent.PlayerTickEvent event){
-        ItemStack i = event.player.getMainHandItem();
+    public static void segurar(TickEvent.PlayerTickEvent event){
         Player le = event.player;
+        ItemStack i = event.player.getMainHandItem();
         if(i.is(ModItems.CEIFADORPR.get()) || i.is(ModItems.CEIFADORR.get())){
             le.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,-1));
             le.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,-1));
             glowColor(le, ChatFormatting.BLACK);
         }else{
-            stopGlowing(le);
+            if(le.isCurrentlyGlowing()){
+                stopGlowing(le);
+            }
             limpaEfeito(le);
         }
     }
     @SubscribeEvent
-    public void ataque(LivingDamageEvent event){
+    public static void ataque(LivingDamageEvent event){
         Entity atacante = event.getSource().getEntity();
         if(atacante instanceof Player player){
             ItemStack is = player.getMainHandItem();
@@ -87,6 +89,7 @@ public class ModEvents {
     }
     public static void stopGlowing(Player player) {
         player.removeEffect(MobEffects.GLOWING);
+        if(!tempTeams.containsKey(player)) return;
         PlayerTeam team = tempTeams.get(player);
         team.getScoreboard().removePlayerFromTeam(player.getName().getString());
         team.getScoreboard().removePlayerTeam(team);
