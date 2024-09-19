@@ -42,18 +42,6 @@ public class ModEvents {
         }
     }
     @SubscribeEvent
-    public static void ataque(LivingDamageEvent event){
-        Entity atacante = event.getSource().getEntity();
-        if(atacante instanceof Player player){
-            ItemStack is = player.getMainHandItem();
-            if(is.is(ModItems.CEIFADORPR.get())){
-                player.heal(event.getAmount()/4);
-            }else if(is.is(ModItems.CEIFADORR.get())){
-                player.heal(event.getAmount()/2);
-            }
-        }
-    }
-    @SubscribeEvent
     public void foidef(LivingDeathEvent event){
         LivingEntity entity =  event.getEntity();
         if(entity instanceof Player player){
