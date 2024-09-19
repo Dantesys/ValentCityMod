@@ -1,6 +1,7 @@
 package com.dantesys.valentcitymod.item;
 
 import com.dantesys.valentcitymod.ValentCityMod;
+import com.dantesys.valentcitymod.item.custom.CeifadorRelic;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.SwordItem;
@@ -15,9 +16,9 @@ public class ModItems {
     public static final RegistryObject<Item> ASCENSION = ITEMS.register("ascension",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<SwordItem> CEIFADORPR = ITEMS.register("ceifadorpr",
-            () -> new SwordItem(ModTier.PASCENCIONTIER,new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(ModTier.PASCENCIONTIER,2,-3f))));
+            () -> new CeifadorRelic(ModTier.PASCENCIONTIER,new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(ModTier.PASCENCIONTIER,2,-3f)),false));
     public static final RegistryObject<SwordItem> CEIFADORR = ITEMS.register("ceifadorr",
-            () -> new SwordItem(ModTier.ASCENCIONTIER,new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(SwordItem.createAttributes(ModTier.ASCENCIONTIER,3,-2.4f))));
+            () -> new CeifadorRelic(ModTier.ASCENCIONTIER,new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(SwordItem.createAttributes(ModTier.ASCENCIONTIER,3,-2.4f)),true));
     public static void register(IEventBus event){
         ITEMS.register(event);
     }

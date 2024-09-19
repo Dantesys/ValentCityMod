@@ -11,9 +11,7 @@ public class CeifadorRelic extends SwordItem {
         super(pTier, pProperties);
         despertada = b;
     }
-
     public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-
         if(despertada){
             pAttacker.heal(4);
         }else{
