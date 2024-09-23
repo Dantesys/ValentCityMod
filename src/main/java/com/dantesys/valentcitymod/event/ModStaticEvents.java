@@ -26,21 +26,20 @@ public class ModStaticEvents {
     public static void segurar(TickEvent.PlayerTickEvent event){
         Player le = event.player;
         ItemStack i = event.player.getMainHandItem();
+        Collection<MobEffectInstance> efeitos = le.getActiveEffects();
+        while(!efeitos.isEmpty()){
+            MobEffectInstance efeito = efeitos.iterator().next();
+            efeitos.remove(efeito);
+            if(efeito != null && efeito.getDuration()==-1){
+                le.removeEffect(efeito.getEffect());
+            }
+        }
         if(i.is(ModItems.CEIFADORPR.get()) || i.is(ModItems.CEIFADORR.get())){
             le.addEffect(new MobEffectInstance(MobEffects.NIGHT_VISION,-1));
             le.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY,-1));
             le.addEffect(new MobEffectInstance(MobEffects.GLOWING,-1));
         }else if(i.is(ModItems.CEIFADORPR.get()) || i.is(ModItems.CEIFADORR.get())){
             le.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,-1));
-        }else{
-            Collection<MobEffectInstance> efeitos = le.getActiveEffects();
-            while(!efeitos.isEmpty()){
-                MobEffectInstance efeito = efeitos.iterator().next();
-                efeitos.remove(efeito);
-                if(efeito != null && efeito.getDuration()==-1){
-                    le.removeEffect(efeito.getEffect());
-                }
-            }
         }
     }
 }
