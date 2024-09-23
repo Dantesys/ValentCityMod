@@ -28,7 +28,7 @@
   },
   "elements": [
     {
-      "name": "ascension_core",
+      "name": "valentcitymod:block/ascension_core",
       "from": [4, 0, 4],
       "to": [12, 8, 12],
       "faces": {

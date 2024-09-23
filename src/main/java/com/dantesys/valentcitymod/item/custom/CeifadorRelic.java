@@ -4,6 +4,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.item.Tier;
+import org.jetbrains.annotations.NotNull;
 
 public class CeifadorRelic extends SwordItem {
     public static boolean despertada = false;
@@ -11,7 +12,7 @@ public class CeifadorRelic extends SwordItem {
         super(pTier, pProperties);
         despertada = b;
     }
-    public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
+    public void postHurtEnemy(ItemStack pStack, LivingEntity pTarget, @NotNull LivingEntity pAttacker) {
         if(despertada){
             pAttacker.heal(4);
         }else{
