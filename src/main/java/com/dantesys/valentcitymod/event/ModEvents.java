@@ -19,7 +19,7 @@ import org.slf4j.Logger;
 import java.util.Collection;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = ValentCityMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = ValentCityMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ModEvents {
     private static final Logger LOGGER = LogUtils.getLogger();
     @SubscribeEvent
