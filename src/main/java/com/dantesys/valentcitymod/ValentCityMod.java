@@ -1,6 +1,7 @@
 package com.dantesys.valentcitymod;
 
 import com.dantesys.valentcitymod.block.ModBlocks;
+import com.dantesys.valentcitymod.event.ModEvents;
 import com.dantesys.valentcitymod.item.ModItems;
 import com.dantesys.valentcitymod.util.CreativeTab;
 import com.mojang.logging.LogUtils;
@@ -31,6 +32,7 @@ public class ValentCityMod
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::addCreativeTba);
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(ModEvents.class);
         CreativeTab.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -54,7 +56,6 @@ public class ValentCityMod
     public void onServerStarting(ServerStartingEvent event) {
 
     }
-
     @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent

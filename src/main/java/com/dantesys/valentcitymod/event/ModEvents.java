@@ -2,6 +2,8 @@ package com.dantesys.valentcitymod.event;
 
 import com.dantesys.valentcitymod.ValentCityMod;
 import com.dantesys.valentcitymod.item.ModItems;
+import com.mojang.logging.LogUtils;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -14,12 +16,14 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.slf4j.Logger;
 
 import java.util.Collection;
 import java.util.Objects;
 
-@Mod.EventBusSubscriber(modid = ValentCityMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = ValentCityMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEvents {
+    private static final Logger LOGGER = LogUtils.getLogger();
     @SubscribeEvent
     public static void segurar(TickEvent.PlayerTickEvent event){
         Player le = event.player;
@@ -41,15 +45,9 @@ public class ModEvents {
     }
     @SubscribeEvent
     public void foidef(LivingDeathEvent event){
-        LivingEntity entity =  event.getEntity();
-        System.out.println(entity);
-        if(entity instanceof Player player){
-            if(player.getInventory().contains(ModItems.CEIFADORPR.get().getDefaultInstance()) || player.getInventory().contains(ModItems.CEIFADORR.get().getDefaultInstance())){
-                Objects.requireNonNull(player.getAttribute(Attributes.MAX_HEALTH)).setBaseValue(20);
-            }
-        }else{
-            Entity atacante = event.getSource().getEntity();
-            System.out.println(atacante);
+        Entity fontedano = event.getSource().getEntity();
+        LOGGER.info("AQUI",fontedano);
+        if(fontedano instanceof LivingEntity atacante){
             if(atacante instanceof Player player){
                 if(player.getMainHandItem().is(ModItems.CEIFADORPR.get())){
                     double max = player.getMaxHealth();
