@@ -19,6 +19,10 @@ public class ModItems {
             () -> new CeifadorRelic(ModTier.PASCENCIONTIER,new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(ModTier.PASCENCIONTIER,2,-3f)),false));
     public static final RegistryObject<SwordItem> CEIFADORR = ITEMS.register("ceifadorr",
             () -> new CeifadorRelic(ModTier.ASCENCIONTIER,new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(SwordItem.createAttributes(ModTier.ASCENCIONTIER,3,-2.4f)),true));
+    public static final RegistryObject<SwordItem> GUERREIROPR = ITEMS.register("guerreiropr",
+            () -> new CeifadorRelic(ModTier.PASCENCIONTIER,new Item.Properties().fireResistant().attributes(SwordItem.createAttributes(ModTier.PASCENCIONTIER,3,-3f)),false));
+    public static final RegistryObject<SwordItem> GUERREIROR = ITEMS.register("guerreiror",
+            () -> new CeifadorRelic(ModTier.ASCENCIONTIER,new Item.Properties().fireResistant().rarity(Rarity.EPIC).attributes(SwordItem.createAttributes(ModTier.ASCENCIONTIER,4,-2.4f)),true));
     public static void register(IEventBus event){
         ITEMS.register(event);
     }

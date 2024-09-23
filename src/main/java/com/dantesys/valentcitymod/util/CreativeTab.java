@@ -23,6 +23,8 @@ public class CreativeTab {
                         output.accept(ModBlocks.ASCENSION_CORE.get());
                         output.accept(ModItems.CEIFADORPR.get());
                         output.accept(ModItems.CEIFADORR.get());
+                        output.accept(ModItems.GUERREIROPR.get());
+                        output.accept(ModItems.GUERREIROR.get());
                     })
                     .build());
 
